@@ -1,4 +1,6 @@
 import 'package:facebook_ui/config/palette.dart';
+import 'package:facebook_ui/models/user_model.dart';
+import 'package:facebook_ui/widgets/profile_avator.dart';
 import 'package:flutter/material.dart';
 
 class Room extends StatelessWidget {
@@ -19,13 +21,9 @@ class Room extends StatelessWidget {
           return Padding(padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: _createRoomButton (),);
         }
-        return Container(
-
-          margin: EdgeInsets.all(2.0),
-          height: 20.0,
-          width: 20.0,
-          color: Colors.red,
-        );
+        final User user = onlineUser[index];
+        return Padding(padding: EdgeInsets.symmetric(horizontal: 8.0),
+        child: ProfileAvator(imageUrl: user.imageUrl,isActive: true,),);
       },
         padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 4.0),
         scrollDirection: Axis.horizontal,

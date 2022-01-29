@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facebook_ui/widgets/profile_avator.dart';
 import 'package:flutter/material.dart';
 import '../models/models.dart';
 
@@ -16,12 +17,13 @@ class CreatePostContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                backgroundImage:
-                    CachedNetworkImageProvider(currentUser.imageUrl),
-                backgroundColor: Colors.grey[200],
-                radius: 20.0,
-              ),
+              // CircleAvatar(
+              //   backgroundImage:
+              //       CachedNetworkImageProvider(currentUser.imageUrl),
+              //   backgroundColor: Colors.grey[200],
+              //   radius: 20.0,
+              // ),
+              ProfileAvator(imageUrl: currentUser.imageUrl),
               const SizedBox(
                 width: 8.0,
               ),
@@ -35,7 +37,7 @@ class CreatePostContainer extends StatelessWidget {
           ),
           Divider(
             height: 10.0,
-            thickness: 0.5,
+            thickness: 1.0,
           ),
           Container(
             height: 40,
