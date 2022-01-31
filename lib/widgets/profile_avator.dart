@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 class ProfileAvator extends StatelessWidget {
   final String imageUrl;
   final bool isActive;
+  final bool hasBorder;
 
-  ProfileAvator({@required this.imageUrl = '', this.isActive = false});
+  ProfileAvator({@required this.imageUrl = '', this.isActive = false,this.hasBorder=false});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,12 @@ class ProfileAvator extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 20.0,
-          backgroundColor: Colors.grey[200],
-          backgroundImage: CachedNetworkImageProvider(imageUrl),
+          backgroundColor: Palette.facebookBlue,
+          child: CircleAvatar(
+            radius: hasBorder ? 17.0 : 20.0,
+            backgroundColor: Colors.grey[200],
+            backgroundImage: CachedNetworkImageProvider(imageUrl),
+          ),
         ),
         isActive
             ? Positioned(

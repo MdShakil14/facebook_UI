@@ -1,3 +1,4 @@
+import 'package:facebook_ui/models/models.dart';
 import 'package:flutter/material.dart';
 import '../config/palette.dart';
 import '../data/data.dart';
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            brightness: Brightness.light,
             backgroundColor: Colors.white,
             title: Text(
               'facebook',
@@ -23,8 +25,9 @@ class HomeScreen extends StatelessWidget {
             centerTitle: false,
             floating: true,
             actions: [
-              CircleButton(Icons.search, 30.0, ()=> print('Search')),
-              CircleButton(MdiIcons.facebookMessenger, 30.0, ()=> print('Messenger'))
+              CircleButton(Icons.search, 30.0, () => print('Search')),
+              CircleButton(
+                  MdiIcons.facebookMessenger, 30.0, () => print('Messenger'))
             ],
           ),
           SliverToBoxAdapter(
@@ -39,7 +42,23 @@ class HomeScreen extends StatelessWidget {
                 child: Room(onlineUsers),
               ),
             ),
-          )
+          ),
+          SliverPadding(
+            padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 5.0),
+            sliver: SliverToBoxAdapter(
+              child: Container(
+                child: Stories(currentUser: currentUser, stories: stories),
+              ),
+            ),
+          ),
+          SliverList(
+              delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              final Post post = posts[index];
+              return PostContainer(post);
+            },
+            childCount: posts.length,
+          ))
         ],
       ),
     );
