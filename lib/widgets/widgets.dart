@@ -4,3 +4,4 @@ export 'room.dart';
 export 'profile_avator.dart';
 export 'stories.dart';
 export 'post_container.dart';
+export 'custom_tab_bar.dart';
